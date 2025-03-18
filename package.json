@@ -1,0 +1,23 @@
+{
+  "name": "com.estafeta.usbcameraplugin",
+  "version": "1.0.0",
+  "description": "Cordova plugin to connect a USB WebCam to android device",
+  "cordova": {
+    "id": "com.estafeta.usbcameraplugin",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.4.0"
+    }
+  ],
+  "author": "",
+  "license": "ISC"
+}
