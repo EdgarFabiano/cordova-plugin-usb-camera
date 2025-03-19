@@ -184,7 +184,7 @@ public final class USBMonitor {
 				// ACTION_USB_DEVICE_ATTACHED never comes on some devices so it should not be added here
 				filter.addAction(ACTION_USB_DEVICE_ATTACHED);
 				filter.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED);
-				context.registerReceiver(mUsbReceiver, filter);
+				context.registerReceiver(mUsbReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
 			}
 			// start connection check
 			mDeviceCounts = 0;
