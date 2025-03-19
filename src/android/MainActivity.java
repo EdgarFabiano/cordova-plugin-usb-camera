@@ -75,6 +75,7 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
 			while (deviceIterator.hasNext()) {
 				indexDevice=indexDevice+1;
 				UsbDevice deviceCamera = deviceIterator.next();
+				Log.d("USBCameraPlugin", "VendorID: " + deviceCamera.getVendorId());
 				//LEGH: Se identifica la camara del vendedor Id:9157 Brobotics y 1133 Logitech y 3141 Sonix Tech y 11902 ViewSonic
 				if(deviceCamera.getVendorId()==1133 || deviceCamera.getVendorId()==11902 || deviceCamera.getVendorId()==9157 || deviceCamera.getVendorId()==3141 || deviceCamera.getVendorId()==9228){
 					isCameraModelConnected=true;
