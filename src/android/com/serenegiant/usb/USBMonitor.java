@@ -315,10 +315,11 @@ public final class USBMonitor {
 		if (destroyed) throw new IllegalStateException("already destroyed");
 		// get detected devices
 		final HashMap<String, UsbDevice> deviceList = mUsbManager.getDeviceList();
+		final Context context = mWeakContext.get();
 
-		if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+		if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
 				!= PackageManager.PERMISSION_GRANTED) {
-			ActivityCompat.requestPermissions(this,
+			ActivityCompat.requestPermissions(context,
 					new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
 		}
 
@@ -328,7 +329,6 @@ public final class USBMonitor {
 			directory.mkdirs();
 		}
 
-		final Context context = mWeakContext.get();
 		// store those devices info before matching filter xml file
 		File logFile = new File(context.getExternalFilesDir(null), "USBCamera/failed_devices.txt");
 		if(!logFile.getParentFile().exists()) {
