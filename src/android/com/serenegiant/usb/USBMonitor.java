@@ -43,6 +43,10 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
 
+import androidx.core.content.ContextCompat;
+import android.Manifest;
+import androidx.core.app.ActivityCompat;
+
 import com.serenegiant.utils.BuildCheck;
 import com.serenegiant.utils.HandlerThreadHandler;
 
@@ -311,10 +315,22 @@ public final class USBMonitor {
 		if (destroyed) throw new IllegalStateException("already destroyed");
 		// get detected devices
 		final HashMap<String, UsbDevice> deviceList = mUsbManager.getDeviceList();
-		// store those devices info before matching filter xml file
-		String fileName = Environment.getExternalStorageDirectory().getAbsolutePath()+ "/USBCamera/failed_devices.txt";
 
-		File logFile = new File(fileName);
+		if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+				!= PackageManager.PERMISSION_GRANTED) {
+			ActivityCompat.requestPermissions(this,
+					new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+		}
+
+		// create the directory if doesn't exists
+		File directory = new File(Environment.getExternalStorageDirectory(), "USBCamera");
+		if (!directory.exists()) {
+			directory.mkdirs();
+		}
+
+		final Context context = mWeakContext.get();
+		// store those devices info before matching filter xml file
+		File logFile = new File(context.getExternalFilesDir(null), "USBCamera/failed_devices.txt");
 		if(!logFile.getParentFile().exists()) {
 			logFile.getParentFile().mkdirs();
 		}
