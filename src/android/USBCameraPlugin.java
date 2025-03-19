@@ -34,7 +34,9 @@ public class USBCameraPlugin extends CordovaPlugin {
                     != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(cordova.getActivity(),
                         new String[]{Manifest.permission.CAMERA}, 1);
-            } else {
+            }
+            if (ContextCompat.checkSelfPermission(cordova.getActivity(), Manifest.permission.CAMERA)
+                    == PackageManager.PERMISSION_GRANTED) {
                 this.StartCamera(context);
                 return true;
             }
