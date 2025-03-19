@@ -1,7 +1,11 @@
 package com.estafeta.usbcameraplugin;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+
+import androidx.core.content.ContextCompat;
+import androidx.core.app.ActivityCompat;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
@@ -10,6 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.pm.PackageManager;
 import android.util.Log;
 
 /**
@@ -25,9 +30,14 @@ public class USBCameraPlugin extends CordovaPlugin {
 		
         Context context = cordova.getActivity().getApplicationContext();
         if (action.equals("StartCamera")) {
-            this.StartCamera(context);
-			
-            return true;
+            if (ContextCompat.checkSelfPermission(cordova.getActivity(), Manifest.permission.CAMERA)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(cordova.getActivity(),
+                        new String[]{Manifest.permission.CAMERA}, 1);
+            } else {
+                this.StartCamera(context);
+                return true;
+            }
         }
         return false;
     }
