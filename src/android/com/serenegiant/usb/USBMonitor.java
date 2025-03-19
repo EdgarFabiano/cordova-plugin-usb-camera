@@ -25,12 +25,12 @@ package com.serenegiant.usb;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
@@ -56,9 +56,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.lang.ref.WeakReference;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -82,6 +80,7 @@ public final class USBMonitor {
 	private final ConcurrentHashMap<UsbDevice, UsbControlBlock> mCtrlBlocks = new ConcurrentHashMap<UsbDevice, UsbControlBlock>();
 	private final SparseArray<WeakReference<UsbDevice>> mHasPermissions = new SparseArray<WeakReference<UsbDevice>>();
 
+	private Activity mActivity;
 	private final WeakReference<Context> mWeakContext;
 	private final UsbManager mUsbManager;
 	private final OnDeviceConnectListener mOnDeviceConnectListener;
@@ -127,10 +126,12 @@ public final class USBMonitor {
 		public void onCancel(UsbDevice device);
 	}
 
-	public USBMonitor(final Context context, final OnDeviceConnectListener listener) {
+	public USBMonitor(final Activity activity, final OnDeviceConnectListener listener) {
 		if (DEBUG) Log.v(TAG, "USBMonitor:Constructor");
 		if (listener == null)
 			throw new IllegalArgumentException("OnDeviceConnectListener should not null.");
+		this.mActivity = activity;
+		Context context = activity.getApplicationContext();
 		mWeakContext = new WeakReference<Context>(context);
 		mUsbManager = (UsbManager)context.getSystemService(Context.USB_SERVICE);
 		mOnDeviceConnectListener = listener;
@@ -315,11 +316,10 @@ public final class USBMonitor {
 		if (destroyed) throw new IllegalStateException("already destroyed");
 		// get detected devices
 		final HashMap<String, UsbDevice> deviceList = mUsbManager.getDeviceList();
-		final Context context = mWeakContext.get();
 
-		if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+		if (ContextCompat.checkSelfPermission(this.mActivity, Manifest.permission.WRITE_EXTERNAL_STORAGE)
 				!= PackageManager.PERMISSION_GRANTED) {
-			ActivityCompat.requestPermissions(context,
+			ActivityCompat.requestPermissions(this.mActivity,
 					new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
 		}
 
@@ -329,6 +329,7 @@ public final class USBMonitor {
 			directory.mkdirs();
 		}
 
+		final Context context = mWeakContext.get();
 		// store those devices info before matching filter xml file
 		File logFile = new File(context.getExternalFilesDir(null), "USBCamera/failed_devices.txt");
 		if(!logFile.getParentFile().exists()) {

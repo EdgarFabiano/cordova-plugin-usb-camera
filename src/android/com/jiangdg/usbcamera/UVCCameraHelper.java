@@ -88,7 +88,7 @@ public class UVCCameraHelper {
         this.mActivity = activity;
         this.mCamView = cameraView;
 
-        mUSBMonitor = new USBMonitor(activity.getApplicationContext(), new USBMonitor.OnDeviceConnectListener() {
+        mUSBMonitor = new USBMonitor(activity, new USBMonitor.OnDeviceConnectListener() {
 
             // called by checking usb device
             // do request device permission
