@@ -76,8 +76,13 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
 				indexDevice=indexDevice+1;
 				UsbDevice deviceCamera = deviceIterator.next();
 				Log.d("USBCameraPlugin", "VendorID: " + deviceCamera.getVendorId());
-				//LEGH: Se identifica la camara del vendedor Id:9157 Brobotics y 1133 Logitech y 3141 Sonix Tech y 11902 ViewSonic
-				if(deviceCamera.getVendorId()==1133 || deviceCamera.getVendorId()==11902 || deviceCamera.getVendorId()==9157 || deviceCamera.getVendorId()==3141 || deviceCamera.getVendorId()==9228){
+				Log.d("USBCameraPlugin", "ProductID: " + deviceCamera.getProductId());
+				if(deviceCamera.getVendorId()==1133 || //Logitech
+						deviceCamera.getVendorId()==11902 || //ViewSonic
+						deviceCamera.getVendorId()==9157 || //Brobotics
+						deviceCamera.getVendorId()==3141 || //Sonix
+						deviceCamera.getVendorId()==1423 || //Warrior maeve webcam HD 1080P . AC340
+						deviceCamera.getVendorId()==9228){
 					isCameraModelConnected=true;
 					break;				
 				}				
@@ -123,7 +128,10 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
             // close camera
             if (isRequest) {
 				
-				if(device.getVendorId()==1133 || device.getVendorId()==9157 || device.getVendorId()==9228){
+				if(device.getVendorId()==1133 ||
+						device.getVendorId()==9157 ||
+						device.getVendorId()==1423 || //Warrior maeve webcam HD 1080P . AC340
+						device.getVendorId()==9228){
 					try{
 						
 						try {
