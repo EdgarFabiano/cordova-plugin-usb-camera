@@ -417,6 +417,7 @@ public class USBVendorId {
 		IDS.put(1309, "American Power Conversion");
 		IDS.put(1314, "ACON, Advanced-Connectek, Inc.");
 		IDS.put(1343, "Synopsys, Inc.");
+		IDS.put(1347, "ViewSonic Corporation");
 		IDS.put(1356, "Sony Corporation");
 		IDS.put(1360, "Fuji Xerox Co., Ltd.");
 		IDS.put(1367, "ATEN International Co. Ltd.");

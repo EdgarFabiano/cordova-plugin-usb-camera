@@ -81,6 +81,7 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
 						deviceCamera.getVendorId()==11902 || //ViewSonic
 						deviceCamera.getVendorId()==9157 || //Brobotics
 						deviceCamera.getVendorId()==3141 || //Sonix
+						deviceCamera.getVendorId()==3141 || deviceCamera.getVendorId()==1060 || //ViewSonic
 						deviceCamera.getVendorId()==1423 || //Warrior maeve webcam HD 1080P . AC340
 						deviceCamera.getVendorId()==9228){
 					isCameraModelConnected=true;
@@ -130,6 +131,7 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
 				
 				if(device.getVendorId()==1133 ||
 						device.getVendorId()==9157 ||
+						device.getVendorId()==3141 || device.getVendorId()==1060 || //ViewSonic
 						device.getVendorId()==1423 || //Warrior maeve webcam HD 1080P . AC340
 						device.getVendorId()==9228){
 					try{
