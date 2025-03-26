@@ -14,29 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-		<Button
-			android:id="@+id/buttonClick"
-			android:layout_width="45dp"
-			android:layout_height="45dp"
-			android:layout_gravity="left"
-			android:layout_marginStart="20dp"
-			android:layout_marginLeft="20dp"
-			android:layout_marginTop="20dp"
-			android:background="@drawable/rounded_corners"
-			android:foreground="@android:drawable/ic_menu_camera"
-			android:onClick="clickFlow" />
-
-		<Button
-			android:id="@+id/button"
-			android:layout_width="45dp"
-			android:layout_height="45dp"
-			android:layout_gravity="right"
-			android:layout_marginTop="20dp"
-			android:layout_marginEnd="20dp"
-			android:layout_marginRight="20dp"
-			android:background="@drawable/rounded_corners"
-			android:foreground="@android:drawable/ic_menu_revert"
-			android:onClick="clickClose" />
 
         <com.serenegiant.usb.widget.UVCCameraTextureView
             android:id="@+id/camera_view"
@@ -45,6 +22,34 @@
             android:layout_gravity="center"
 			android:gravity="center" />
 
+
+		<Button
+			android:id="@+id/buttonClick"
+			android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="left"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_corners"
+            android:foreground="@android:drawable/ic_menu_camera"
+			android:drawableTop="@android:drawable/ic_menu_camera"
+			android:text="Captura"
+			android:onClick="clickFlow" />
+
+		<Button
+			android:id="@+id/button"
+			android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rounded_corners"
+            android:foreground="@android:drawable/ic_menu_revert"
+            android:drawableTop="@android:drawable/ic_menu_revert"
+			android:text="Voltar"
+			android:onClick="clickClose" />
 
 	</FrameLayout>
 
