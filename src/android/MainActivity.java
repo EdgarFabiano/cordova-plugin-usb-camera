@@ -205,16 +205,6 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
 			mCameraHelper.initUSBMonitor(this, mUVCCameraView, listener);
 			this.setTitle("Vista previa de la cámara");
 
-			buttonClick = new Button(this);
-			buttonClick.setText("Captura");
-			buttonClick.setBackgroundColor(Color.RED);
-			buttonClick.setVisibility(View.VISIBLE);
-			buttonClick.setOnClickListener(this::clickFlow);
-			RelativeLayout layout = findViewById(R.id.relative_layout);
-			if (layout != null) {
-				layout.addView(buttonClick);
-			}
-
 		}catch(Exception e){
 				//Devolver el resultado Erroneo
 				showShortMsg("Error al leer la camara. "+e.toString());
