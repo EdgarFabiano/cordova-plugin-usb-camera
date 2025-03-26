@@ -284,9 +284,12 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
         if (mCameraHelper == null || !mCameraHelper.isCameraOpened()) {
             showShortMsg("Conexión fallida, verifique conexión de la cámara o permisos");
         }else {
-            String picPath = Environment.getExternalStorageDirectory().getAbsolutePath()
-                    + File.separator + "usbcameraplugin/images/"
-                    + "CapturedPhoto" + UVCCameraHelper.SUFFIX_JPEG;
+			File picDir = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "usbcameraplugin/images");
+			if (!picDir.exists()) {
+				picDir.mkdirs(); // Cria o diretório se não existir
+			}
+			File picFile = new File(picDir, "CapturedPhoto" + UVCCameraHelper.SUFFIX_JPEG);
+			String picPath = picFile.getAbsolutePath();
 
             mCameraHelper.capturePicture(picPath, new AbstractUVCCameraHandler.OnCaptureListener() {
                 @Override

@@ -36,7 +36,6 @@ public class H264EncodeConsumer extends Thread {
     private boolean isEncoderStart = false;
 
     private MediaFormat mFormat;
-    private static String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/test2.h264";
     private BufferedOutputStream outputStream;
     final int millisPerframe = 1000 / 20;
     long lastPush = 0;
