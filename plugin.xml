@@ -97,14 +97,12 @@
 		<source-file src="jniLibs/x86_64/libusb100.so" target-dir="jniLibs/x86_64/" />
 		<source-file src="jniLibs/x86_64/libuvc.so" target-dir="jniLibs/x86_64/" />
 		<source-file src="jniLibs/x86_64/libUVCCamera.so" target-dir="jniLibs/x86_64/" />			
-		
-		
 
-
-		
 	
-			<framework src="src/android/camera.gradle" custom="true" type="gradleReference"/>
-			<lib-file src="libs/common-4.1.1.aar"/>
+	   <framework src="src/android/camera.gradle" custom="true" type="gradleReference"/>
+	   <framework src="androidx.constraintlayout:constraintlayout:2.1.4" />
+	   <framework src="androidx.appcompat:appcompat:1.6.1" />
+	   <lib-file src="libs/common-4.1.1.aar"/>
 			
 		<config-file target="AndroidManifest.xml" parent="/manifest/application">
             <activity android:label="New Activity" android:name="com.estafeta.usbcameraplugin.MainActivity"></activity>
