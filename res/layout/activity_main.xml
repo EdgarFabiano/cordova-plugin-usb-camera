@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:background="#ff000000"
-	tools:context=".MainActivity">
+	tools:context=".MainActivity"
+	tools:ignore="MergeRootFrame">
+
+
 
 	<FrameLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintBottom_toBottomOf="parent">
+		android:layout_height="match_parent">
+
 
 		<com.serenegiant.usb.widget.UVCCameraTextureView
 			android:id="@+id/camera_view"
@@ -21,30 +22,31 @@
 			android:layout_gravity="center"
 			android:gravity="center" />
 
-		<androidx.appcompat.widget.AppCompatButton
+
+		<Button
 			android:id="@+id/buttonClick"
 			android:layout_width="45dp"
 			android:layout_height="45dp"
+			android:layout_gravity="left"
 			android:layout_marginStart="20dp"
+			android:layout_marginLeft="20dp"
 			android:layout_marginTop="20dp"
 			android:background="@drawable/rounded_corners"
 			android:foreground="@android:drawable/ic_menu_camera"
-			android:onClick="clickFlow"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
+			android:onClick="clickFlow" />
 
-		<androidx.appcompat.widget.AppCompatButton
+		<Button
 			android:id="@+id/button"
 			android:layout_width="45dp"
 			android:layout_height="45dp"
-			android:layout_marginEnd="20dp"
+			android:layout_gravity="right"
 			android:layout_marginTop="20dp"
+			android:layout_marginEnd="20dp"
+			android:layout_marginRight="20dp"
 			android:background="@drawable/rounded_corners"
 			android:foreground="@android:drawable/ic_menu_revert"
-			android:onClick="clickClose"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
+			android:onClick="clickClose" />
 
 	</FrameLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

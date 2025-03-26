@@ -100,8 +100,6 @@
 
 	
 	   <framework src="src/android/camera.gradle" custom="true" type="gradleReference"/>
-	   <framework src="androidx.constraintlayout:constraintlayout:2.1.4" />
-	   <framework src="androidx.appcompat:appcompat:1.6.1" />
 	   <lib-file src="libs/common-4.1.1.aar"/>
 			
 		<config-file target="AndroidManifest.xml" parent="/manifest/application">

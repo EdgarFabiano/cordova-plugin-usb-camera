@@ -13,7 +13,6 @@ import android.text.TextUtils;
 import android.view.Surface;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import android.content.Intent;
