@@ -201,7 +201,11 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
 			mCameraHelper.setDefaultPreviewSize(1280,720);
 			mCameraHelper.setDefaultFrameFormat(UVCCameraHelper.FRAME_FORMAT_MJPEG);
 			mCameraHelper.initUSBMonitor(this, mUVCCameraView, listener);
-			this.setTitle("");
+			this.setTitle("Vista previa de la cámara");
+			buttonClick = findViewById(R.id.buttonClick);
+			if (buttonClick != null) {
+				buttonClick.setVisibility(View.VISIBLE);
+			}
 		}catch(Exception e){
 				//Devolver el resultado Erroneo
 				showShortMsg("Error al leer la camara. "+e.toString());
