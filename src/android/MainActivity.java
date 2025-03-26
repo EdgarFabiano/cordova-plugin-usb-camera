@@ -3,6 +3,7 @@ package com.estafeta.usbcameraplugin;
 import com.estafeta.pdv.R;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.hardware.usb.UsbDevice;
 import android.os.Bundle;
 import android.os.Environment;
@@ -12,6 +13,7 @@ import android.text.TextUtils;
 import android.view.Surface;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import android.content.Intent;
@@ -201,7 +203,18 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
 			mCameraHelper.setDefaultPreviewSize(1280,720);
 			mCameraHelper.setDefaultFrameFormat(UVCCameraHelper.FRAME_FORMAT_MJPEG);
 			mCameraHelper.initUSBMonitor(this, mUVCCameraView, listener);
-			this.setTitle("");
+			this.setTitle("Vista previa de la cámara");
+
+			buttonClick = new Button(this);
+			buttonClick.setText("Captura");
+			buttonClick.setBackgroundColor(Color.RED);
+			buttonClick.setVisibility(View.VISIBLE);
+			buttonClick.setOnClickListener(this::clickFlow);
+			RelativeLayout layout = findViewById(R.id.relative_layout);
+			if (layout != null) {
+				layout.addView(buttonClick);
+			}
+
 		}catch(Exception e){
 				//Devolver el resultado Erroneo
 				showShortMsg("Error al leer la camara. "+e.toString());
