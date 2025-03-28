@@ -33,6 +33,8 @@
 	<usb-device product-id="4836" vendor-id="9573" />
 	<usb-device product-id="2229" vendor-id="1133" />
 	<usb-device product-id="2092" vendor-id="1133" />
+	<usb-device product-id="1002" vendor-id="1133" />
+	<usb-device product-id="2092" vendor-id="1133" />
 	<usb-device product-id="14433" vendor-id="1423" />
 	<usb-device product-id="60416" vendor-id="1060" />
 	<usb-device product-id="40968" vendor-id="1347" />
