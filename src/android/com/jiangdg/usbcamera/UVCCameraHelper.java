@@ -313,6 +313,10 @@ public class UVCCameraHelper {
         return mUSBMonitor;
     }
 
+    public void setUSBMonitor(USBMonitor monitor) {
+        mUSBMonitor = monitor;
+    }
+
     public void setOnPreviewFrameListener(AbstractUVCCameraHandler.OnPreViewResultListener listener) {
         if(mCameraHandler != null) {
             mCameraHandler.setOnPreViewResultListener(listener);

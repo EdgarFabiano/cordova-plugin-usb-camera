@@ -199,6 +199,7 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
 			mUVCCameraView.setCallback(this);
 			mCameraHelper = UVCCameraHelper.getInstance();
 			//mCameraHelper.setDefaultPreviewSize(640,360);
+			mCameraHelper.setUSBMonitor(null);
 			mCameraHelper.setDefaultPreviewSize(1280,720);
 			mCameraHelper.setDefaultFrameFormat(UVCCameraHelper.FRAME_FORMAT_MJPEG);
 			mCameraHelper.initUSBMonitor(this, mUVCCameraView, listener);
