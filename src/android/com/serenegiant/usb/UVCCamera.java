@@ -21,7 +21,7 @@
  *  may have a different license, see the respective files.
  */
 
-package com.serenegiant.usb;
+package com.jiangdg.uvc;
 
 import android.graphics.SurfaceTexture;
 import android.hardware.usb.UsbDevice;
@@ -31,6 +31,10 @@ import android.view.Surface;
 import android.view.SurfaceHolder;
 
 import com.serenegiant.usb.USBMonitor.UsbControlBlock;
+import com.serenegiant.usb.IStatusCallback;
+import com.serenegiant.usb.Size;
+import com.serenegiant.usb.IButtonCallback;
+import com.serenegiant.usb.IFrameCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -1049,7 +1053,7 @@ public class UVCCamera {
     private final native int nativeConnect(long id_camera, int venderId, int productId, int fileDescriptor, int busNum, int devAddr, String usbfs);
     private static final native int nativeRelease(final long id_camera);
 
-	private static final native int nativeSetStatusCallback(final long mNativePtr, final IStatusCallback callback);
+	private  static final native int nativeSetStatusCallback(final long mNativePtr, final IStatusCallback callback);
 	private static final native int nativeSetButtonCallback(final long mNativePtr, final IButtonCallback callback);
 
     private static final native int nativeSetPreviewSize(final long id_camera, final int width, final int height, final int min_fps, final int max_fps, final int mode, final float bandwidth);

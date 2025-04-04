@@ -27,7 +27,7 @@ import android.app.Activity;
 import android.view.Surface;
 
 import com.serenegiant.glutils.RendererHolder;
-import com.serenegiant.usb.UVCCamera;
+import com.jiangdg.uvc.UVCCamera;
 import com.serenegiant.usb.widget.CameraViewInterface;
 
 import java.io.FileNotFoundException;

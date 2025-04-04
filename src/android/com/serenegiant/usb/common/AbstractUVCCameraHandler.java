@@ -23,7 +23,7 @@ import android.view.SurfaceHolder;
 import com.serenegiant.usb.IFrameCallback;
 import com.serenegiant.usb.Size;
 import com.serenegiant.usb.USBMonitor;
-import com.serenegiant.usb.UVCCamera;
+import com.jiangdg.uvc.UVCCamera;
 import com.serenegiant.usb.encoder.MediaEncoder;
 import com.serenegiant.usb.encoder.MediaMuxerWrapper;
 import com.serenegiant.usb.encoder.MediaSurfaceEncoder;

@@ -14,7 +14,7 @@ import org.easydarwin.sw.TxtOverlay;
 import com.serenegiant.usb.DeviceFilter;
 import com.serenegiant.usb.Size;
 import com.serenegiant.usb.USBMonitor;
-import com.serenegiant.usb.UVCCamera;
+import com.jiangdg.uvc.UVCCamera;
 import com.serenegiant.usb.common.AbstractUVCCameraHandler;
 import com.serenegiant.usb.common.UVCCameraHandler;
 import com.serenegiant.usb.encoder.RecordParams;
@@ -101,7 +101,7 @@ public class UVCCameraHelper {
             // called by taking out usb device
             // do close camera
             @Override
-            public void onDettach(UsbDevice device) {
+            public void onDetach(UsbDevice device) {
                 if (listener != null) {
                     listener.onDettachDev(device);
                 }
