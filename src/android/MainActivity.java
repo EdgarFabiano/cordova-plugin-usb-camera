@@ -48,20 +48,12 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
     private UVCCameraHelper mCameraHelper;
     private CameraViewInterface mUVCCameraView;
     private View mTextureView;
-    private Button buttonClick;
+	private Button buttonClick;
+	private Button buttonRetry;
     private boolean isRequest;
     private boolean isPreview;
-	 
 
-
-
-
-
-
-    private UVCCameraHelper.OnMyDevConnectListener listener = new UVCCameraHelper.OnMyDevConnectListener() {
-
-        @Override
-        public void onAttachDev(UsbDevice device) {
+	private void onAttachDevice(UsbDevice device) {
 		boolean isCameraModelConnected=false;
 		//LEGH: Se piden permisos de uso de USB
 		int indexDevice=-1;
@@ -70,7 +62,7 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
 		Iterator<UsbDevice> deviceIterator;
 
 		try{
-			usbManager =  (UsbManager) MainActivity.this.getSystemService(Context.USB_SERVICE);		
+			usbManager =  (UsbManager) MainActivity.this.getSystemService(Context.USB_SERVICE);
 			deviceList = usbManager.getDeviceList();
 			deviceIterator = deviceList.values().iterator();
 			while (deviceIterator.hasNext()) {
@@ -86,12 +78,12 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
 						deviceCamera.getVendorId()==1423 || //Warrior maeve webcam HD 1080P . AC340
 						deviceCamera.getVendorId()==9228){
 					isCameraModelConnected=true;
-					break;				
-				}				
+					break;
+				}
 			}
-			
+
 			if(isCameraModelConnected){
-				
+
 				// request open permission
 				if (!isRequest) {
 					isRequest = true;
@@ -100,32 +92,35 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
 					}
 				}
 			}else{
-					//Devolver el resultado Erroneo
-					showShortMsg("La cámara ha sido desconectada");
-					Log.e("USBCameraPlugin", "No se detecto la cámara");
-					Intent returnIntent = new Intent();
-					returnIntent.putExtra("result", "No se detecto la camara");
-					setResult(Activity.RESULT_CANCELED, returnIntent);
-					finish();
-			}			
-			
-			
-		}catch(Exception e){
 				//Devolver el resultado Erroneo
-				showShortMsg("Error al leer la camara. "+e.toString());
-				Log.e("USBCameraPlugin", "Error al leer la camara. "+e.toString());
+				showShortMsg("La cámara ha sido desconectada");
+				Log.e("USBCameraPlugin", "No se detecto la cámara");
 				Intent returnIntent = new Intent();
-				returnIntent.putExtra("result", "Error al leer la camara. "+e.toString());
+				returnIntent.putExtra("result", "No se detecto la camara");
 				setResult(Activity.RESULT_CANCELED, returnIntent);
 				finish();
+			}
+
+
+		}catch(Exception e){
+			//Devolver el resultado Erroneo
+			showShortMsg("Error al leer la camara. "+e.toString());
+			Log.e("USBCameraPlugin", "Error al leer la camara. "+e.toString());
+			Intent returnIntent = new Intent();
+			returnIntent.putExtra("result", "Error al leer la camara. "+e.toString());
+			setResult(Activity.RESULT_CANCELED, returnIntent);
+			finish();
 		}
-		
+	}
 
-		
-		
-        }
+    private UVCCameraHelper.OnMyDevConnectListener listener = new UVCCameraHelper.OnMyDevConnectListener() {
 
-        @Override
+		@Override
+		public void onAttachDev(UsbDevice device) {
+			onAttachDevice(device);
+		}
+
+		@Override
         public void onDettachDev(UsbDevice device) {
             // close camera
             if (isRequest) {
@@ -177,6 +172,14 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
             } else {
                 isPreview = true;
                 showShortMsg("Conectando");
+				runOnUiThread(()-> {
+					if(buttonClick != null) {
+						buttonClick.setVisibility(View.VISIBLE);
+					}
+					if(buttonRetry != null) {
+						buttonRetry.setVisibility(View.GONE);
+					}
+				});
             }
         }
 
@@ -194,6 +197,14 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
 
 		try{
 			mTextureView=findViewById(R.id.camera_view);
+			buttonClick=findViewById(R.id.buttonClick);
+			if(buttonClick != null) {
+				buttonClick.setVisibility(View.GONE);
+			}
+			buttonRetry=findViewById(R.id.buttonRetry);
+			if(buttonRetry != null) {
+				buttonRetry.setVisibility(View.VISIBLE);
+			}
 			// step.1 initialize UVCCameraHelper
 			mUVCCameraView = (CameraViewInterface) mTextureView;
 			mUVCCameraView.setCallback(this);
@@ -283,13 +294,19 @@ public class MainActivity extends Activity implements CameraDialog.CameraDialogP
         }
     }
 
-    public void clickFlow(View view){
+	public void retry(View view) {
+		isRequest = false;
+		onAttachDevice(null);
+	}
+
+
+	public void clickFlow(View view){
         if (mCameraHelper == null || !mCameraHelper.isCameraOpened()) {
             showShortMsg("Conexión fallida, verifique conexión de la cámara o permisos");
         }else {
 			File picDir = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "usbcameraplugin/images");
 			if (!picDir.exists()) {
-				picDir.mkdirs(); // Cria o diretório se não existir
+				picDir.mkdirs(); // Crea el directorio si no existe
 			}
 			File picFile = new File(picDir, "CapturedPhoto" + UVCCameraHelper.SUFFIX_JPEG);
 			String picPath = picFile.getAbsolutePath();
