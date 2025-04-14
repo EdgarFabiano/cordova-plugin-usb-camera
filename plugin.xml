@@ -24,8 +24,12 @@
 		<!-- com.estafeta.usbcameraplugin.USBCameraPlugin -->
         <source-file src="src/android/USBCameraPlugin.java" target-dir="src/com/estafeta/usbcameraplugin/USBCameraPlugin/" />
 		<source-file src="src/android/MainActivity.java" target-dir="src/com/estafeta/usbcameraplugin/USBCameraPlugin/" />
+<!--		<source-file src="src/proguard-rules.pro"  parent="/*" />-->
 		<!-- com.estafeta.usbcameraplugin.com.jiangdg.usbcameraplugin.utils -->
 		<source-file src="src/android/com/jiangdg/usbcamera/utils/FileUtils.java" target-dir="src/com/estafeta/usbcameraplugin/com/jiangdg/usbcamera/utils/" />
+	   <source-file src="src/android/com/jiangdg/usbcamera/utils/XLogWrapper.java" target-dir="src/com/estafeta/usbcameraplugin/com/jiangdg/usbcamera/utils/" />
+	   <source-file src="src/android/com/jiangdg/usbcamera/utils/BuildCheck.java" target-dir="src/com/estafeta/usbcameraplugin/com/jiangdg/usbcamera/utils/" />
+	   <source-file src="src/android/com/jiangdg/usbcamera/utils/HandlerThreadHandler.java" target-dir="src/com/estafeta/usbcameraplugin/com/jiangdg/usbcamera/utils/" />
 		<!-- com.estafeta.usbcameraplugin.com.jiangdg.usbcamera -->
 		<source-file src="src/android/com/jiangdg/usbcamera/UVCCameraHelper.java" target-dir="src/com/estafeta/usbcameraplugin/com/jiangdg/usbcamera/" />
 		<!-- com.estafeta.usbcameraplugin.com.serenegiant.usb.common -->
@@ -53,13 +57,16 @@
 		<!-- com.estafeta.usbcameraplugin.com.serenegiant.usb -->
 		<source-file src="src/android/com/serenegiant/usb/CameraDialog.java" target-dir="src/com/estafeta/usbcameraplugin/com/serenegiant/usb/" />
 		<source-file src="src/android/com/serenegiant/usb/DeviceFilter.java" target-dir="src/com/estafeta/usbcameraplugin/com/serenegiant/usb/" />
-		<source-file src="src/android/com/serenegiant/usb/IButtonCallback.java" target-dir="src/com/estafeta/usbcameraplugin/com/serenegiant/usb/" />
-		<source-file src="src/android/com/serenegiant/usb/IFrameCallback.java" target-dir="src/com/estafeta/usbcameraplugin/com/serenegiant/usb/" />
-		<source-file src="src/android/com/serenegiant/usb/IStatusCallback.java" target-dir="src/com/estafeta/usbcameraplugin/com/serenegiant/usb/" />
+
+		<source-file src="src/android/com/jiangdg/uvc/IButtonCallback.java" target-dir="src/com/estafeta/usbcameraplugin/com/jiangdg/uvc/" />
+		<source-file src="src/android/com/jiangdg/uvc/IFrameCallback.java" target-dir="src/com/estafeta/usbcameraplugin/com/jiangdg/uvc/" />
+		<source-file src="src/android/com/jiangdg/uvc/IStatusCallback.java" target-dir="src/com/estafeta/usbcameraplugin/com/jiangdg/uvc/" />
 		<source-file src="src/android/com/serenegiant/usb/Size.java" target-dir="src/com/estafeta/usbcameraplugin/com/serenegiant/usb/" />
-		<source-file src="src/android/com/serenegiant/usb/USBMonitor.java" target-dir="src/com/estafeta/usbcameraplugin/com/serenegiant/usb/" />
-		<source-file src="src/android/com/serenegiant/usb/USBVendorId.java" target-dir="src/com/estafeta/usbcameraplugin/com/serenegiant/usb/" />
-		<source-file src="src/android/com/serenegiant/usb/UVCCamera.java" target-dir="src/com/estafeta/usbcameraplugin/com/serenegiant/usb/" />
+	   <source-file src="src/android/com/jiangdg/uvc/UVCCamera.java" target-dir="src/com/estafeta/usbcameraplugin/com/jiangdg/uvc/" />
+
+	   <source-file src="src/android/com/serenegiant/usb/USBMonitor.java" target-dir="src/com/estafeta/usbcameraplugin/com/serenegiant/usb/" />
+	   <source-file src="src/android/com/serenegiant/usb/USBVendorId.java" target-dir="src/com/estafeta/usbcameraplugin/com/serenegiant/usb/" />
+
 		<!-- com.estafeta.usbcameraplugin.org.easydarwin.sw -->
 		<source-file src="src/android/org/easydarwin/sw/JNIUtil.java" target-dir="src/com/estafeta/usbcameraplugin/org/easydarwin/sw/" />
 		<source-file src="src/android/org/easydarwin/sw/TxtOverlay.java" target-dir="src/com/estafeta/usbcameraplugin/org/easydarwin/sw/" />
@@ -88,18 +95,30 @@
 		<source-file src="jniLibs/armeabi-v7a/libuvc.so" target-dir="jniLibs/armeabi-v7a/" />
 		<source-file src="jniLibs/armeabi-v7a/libUVCCamera.so" target-dir="jniLibs/armeabi-v7a/" />		
 		
-		<source-file src="jniLibs/x86/libjpeg-turbo1500.so" target-dir="jniLibs/x86/" />
-		<source-file src="jniLibs/x86/libusb100.so" target-dir="jniLibs/x86/" />
-		<source-file src="jniLibs/x86/libuvc.so" target-dir="jniLibs/x86/" />
-		<source-file src="jniLibs/x86/libUVCCamera.so" target-dir="jniLibs/x86/" />			
-		
-		<source-file src="jniLibs/x86_64/libjpeg-turbo1500.so" target-dir="jniLibs/x86_64/" />
-		<source-file src="jniLibs/x86_64/libusb100.so" target-dir="jniLibs/x86_64/" />
-		<source-file src="jniLibs/x86_64/libuvc.so" target-dir="jniLibs/x86_64/" />
-		<source-file src="jniLibs/x86_64/libUVCCamera.so" target-dir="jniLibs/x86_64/" />			
+<!--		<source-file src="jniLibs/x86/libjpeg-turbo1500.so" target-dir="jniLibs/x86/" />-->
+<!--		<source-file src="jniLibs/x86/libusb100.so" target-dir="jniLibs/x86/" />-->
+<!--		<source-file src="jniLibs/x86/libuvc.so" target-dir="jniLibs/x86/" />-->
+<!--		<source-file src="jniLibs/x86/libUVCCamera.so" target-dir="jniLibs/x86/" />			-->
+<!--		-->
+<!--		<source-file src="jniLibs/x86_64/libjpeg-turbo1500.so" target-dir="jniLibs/x86_64/" />-->
+<!--		<source-file src="jniLibs/x86_64/libusb100.so" target-dir="jniLibs/x86_64/" />-->
+<!--		<source-file src="jniLibs/x86_64/libuvc.so" target-dir="jniLibs/x86_64/" />-->
+<!--		<source-file src="jniLibs/x86_64/libUVCCamera.so" target-dir="jniLibs/x86_64/" />			-->
 
-	
+
+
+	   <config-file target="proguard-rules.pro" parent="/*">
+		   <![CDATA[
+			-keep class com.jiangdg.uvc.** { *; }
+			-keepclassmembers class * {
+				native <methods>;
+			}
+        ]]>
+	   </config-file>
+
 	   <framework src="src/android/camera.gradle" custom="true" type="gradleReference"/>
+	   <framework src="com.elvishew:xlog:1.11.1" />
+<!--	   <framework src="com.jiangdg.uvccamera:uvccamera:3.3.3" />-->
 	   <lib-file src="libs/common-4.1.1.aar"/>
 			
 		<config-file target="AndroidManifest.xml" parent="/manifest/application">

@@ -1,4 +1,4 @@
-package com.serenegiant.usb;
+package com.jiangdg.uvc;
 
 import java.nio.ByteBuffer;
 
