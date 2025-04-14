@@ -58,8 +58,8 @@
 		<source-file src="src/android/com/serenegiant/usb/CameraDialog.java" target-dir="src/com/estafeta/usbcameraplugin/com/serenegiant/usb/" />
 		<source-file src="src/android/com/serenegiant/usb/DeviceFilter.java" target-dir="src/com/estafeta/usbcameraplugin/com/serenegiant/usb/" />
 
-		<source-file src="src/android/com/serenegiant/usb/IButtonCallback.java" target-dir="src/com/estafeta/usbcameraplugin/com/serenegiant/usb/" />
-		<source-file src="src/android/com/serenegiant/usb/IFrameCallback.java" target-dir="src/com/estafeta/usbcameraplugin/com/serenegiant/usb/" />
+		<source-file src="src/android/com/jiangdg/uvc/IButtonCallback.java" target-dir="src/com/estafeta/usbcameraplugin/com/jiangdg/uvc/" />
+		<source-file src="src/android/com/jiangdg/uvc/IFrameCallback.java" target-dir="src/com/estafeta/usbcameraplugin/com/jiangdg/uvc/" />
 		<source-file src="src/android/com/jiangdg/uvc/IStatusCallback.java" target-dir="src/com/estafeta/usbcameraplugin/com/jiangdg/uvc/" />
 		<source-file src="src/android/com/serenegiant/usb/Size.java" target-dir="src/com/estafeta/usbcameraplugin/com/serenegiant/usb/" />
 	   <source-file src="src/android/com/jiangdg/uvc/UVCCamera.java" target-dir="src/com/estafeta/usbcameraplugin/com/jiangdg/uvc/" />

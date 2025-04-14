@@ -38,8 +38,6 @@ import com.serenegiant.usb.USBMonitor;
 import com.serenegiant.usb.USBMonitor.UsbControlBlock;
 
 import com.serenegiant.usb.Size;
-import com.serenegiant.usb.IButtonCallback;
-import com.serenegiant.usb.IFrameCallback;
 
 import com.jiangdg.usbcamera.utils.XLogWrapper;
 
